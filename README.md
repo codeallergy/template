@@ -2,18 +2,22 @@
 
 Template Server Application with Web Interface
 
-How to build UI
-`
+How to run UI locally
+```
 cd webapp
 npm install
-cd ..
-go generate
-`
+npm run dev
+```
 
 How to build App
 ```
 go generate
 make
+```
+
+How to run App
+```
+./template run
 ```
 
 Properties:
