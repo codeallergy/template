@@ -6,7 +6,7 @@ require (
 	github.com/codeallergy/badgerstore v1.0.0
 	github.com/codeallergy/glue v1.0.2
 	github.com/codeallergy/sprint v1.0.4
-	github.com/codeallergy/sprintframework v1.0.0
+	github.com/codeallergy/sprintframework v1.0.1
 	github.com/codeallergy/store v1.0.1
 	github.com/gomarkdown/markdown v0.0.0-20220905174103-7b278df48cfb
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.15.2

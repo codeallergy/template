@@ -614,8 +614,8 @@ github.com/codeallergy/sealmod v1.0.0 h1:2nSGv6ikUROpHG4fipXPdztaXe2esBCZCc8y2Ti
 github.com/codeallergy/sealmod v1.0.0/go.mod h1:73JwkNXSufsgTzIaZthd469yTcQq3Sg3x4MGUY4Bk6E=
 github.com/codeallergy/sprint v1.0.4 h1:NaqcZy0Vqfmy3SnZpqyPpKFCbtbMhBtaqOk7mD8rq+8=
 github.com/codeallergy/sprint v1.0.4/go.mod h1:Zp6bFk2fIndgMpR2yNm97tC/A5zcNNIu4JbjJXGiwak=
-github.com/codeallergy/sprintframework v1.0.0 h1:Sds4oImewrYaY7d99UEajRBOgYId2+dKbPyAlsgCspU=
-github.com/codeallergy/sprintframework v1.0.0/go.mod h1:F3XN4bJQimMz5ftwcZ2QLD8LCYQDSLe+99wTTYho7ZU=
+github.com/codeallergy/sprintframework v1.0.1 h1:m2xbnbA/WenM/G0jB69w4bs0sLsWpWWZ3dqgAdRDdPE=
+github.com/codeallergy/sprintframework v1.0.1/go.mod h1:F3XN4bJQimMz5ftwcZ2QLD8LCYQDSLe+99wTTYho7ZU=
 github.com/codeallergy/sprintpb v1.0.0 h1:4RfRGxXv5OOm2nxgXtgZC+QrYooLPvZv2t+IiNvgl48=
 github.com/codeallergy/sprintpb v1.0.0/go.mod h1:Fqc8KAv9VMMxyre0oTqPG6OPxsMp9ai0qnIuZ6Xnc98=
 github.com/codeallergy/store v1.0.0/go.mod h1:PK4RFog/HGR4km080pKBlEkmtDLaFLoLcFARtvZg1GE=
