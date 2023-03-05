@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>{{ .Project }}</title>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Source+Code+Pro:300,600|Titillium+Web:400,600,700" rel="stylesheet">
+</head>
+
+<body>
+
+<div id="app">
+    <h4>Password Recovery</h4>
+
+    <p>Someone requested a password reset for your account. If this was not you, please disregard this email. If you'd like to continue use the code provided below:</p>
+    <ul>
+        <li><strong>Code</strong> {{ .Code }}</li>
+        <li><strong>IP Address</strong> {{ .RemoteIP }}</li>
+        <li><strong>Time</strong> {{ .Time }}</li>
+    </ul>
+
+    <p>This code will expire in 20 minutes.</p>
+
+    <p>Thanks, {{ .Project }} Team</p>
+
+</div>
+
+</body>
+
+</html>

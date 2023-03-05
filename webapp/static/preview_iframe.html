@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Light Template</title>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Source+Code+Pro:300,600|Titillium+Web:400,600,700" rel="stylesheet">
+
+  <script>
+
+    document.addEventListener("contextmenu", (evt) => {
+      evt.preventDefault();
+    }, false);
+
+    document.addEventListener("copy", (evt) => {
+      evt.clipboardData.setData("text/plain", "Copying is not allowed on Light Template");
+      evt.preventDefault();
+    }, false);
+  </script>
+  <style>
+    * { user-select: none; }
+    *::selection { background: none; }
+    *::-moz-selection { background: none; }
+  </style>
+
+</head>
+
+<body>
+
+<div id="app">
+</div>
+
+</body>
+
+</html>

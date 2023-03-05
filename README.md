@@ -1,2 +1,28 @@
 # template
-Template of Server Application with Web Interface
+
+Template Server Application with Web Interface
+
+How to build UI
+`
+cd webapp
+npm install
+cd ..
+go generate
+`
+
+How to build App
+`
+go generate
+make
+`
+
+Properties:
+```
+access.token.minutes 20 by default
+refresh.token.hours   24 by default
+mail.sender   email like noreply@domainname
+mail.support  email like support@domainname 
+jwt.secret.key   token
+mailgun.key from mailgun dashboard
+```
+

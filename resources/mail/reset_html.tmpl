@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>{{ .Project }}</title>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Source+Code+Pro:300,600|Titillium+Web:400,600,700" rel="stylesheet">
+</head>
+
+<body>
+
+<div id="app">
+    <h4>Password Reset</h4>
+
+    <p>Hi there,</p>
+
+    <p>This notification is on behalf of {{ .Project }} to let you know that your password has been successfully reset from IP address {{ .RemoteIP }}.</p>
+
+    <p>If you did not reset your account password, please contact {{ .Project }} Support immediately at {{ .HelpEmail }}.</p>
+
+    <p>Thanks, {{ .Project }} Team</p>
+
+</div>
+
+</body>
+
+</html>

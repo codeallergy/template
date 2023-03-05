@@ -1,0 +1,161 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+
+option go_package = "pkg/pb";
+option java_multiple_files = true;
+option java_package = "com.codeallergy";
+option java_outer_classname = "LightTemplateProtos";
+option objc_class_prefix = "LTP";
+
+import "protoc-gen-openapiv2/options/annotations.proto";
+import "google/protobuf/empty.proto";
+
+option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
+    info: {
+        title: "AuthService";
+        version: "1.0";
+        contact: {
+            name: "AuthService";
+            url: "https://github.com/codeallergy/template";
+            email: "zander@schwid.com";
+        };
+    };
+    schemes: HTTP;
+    schemes: HTTPS;
+    consumes: "application/json";
+    consumes: "application/octet-stream";
+    produces: "application/json";
+    produces: "application/octet-stream";
+};
+
+package lighttemplate;
+
+
+//
+//  AuthService
+//
+
+service AuthService {
+
+    rpc Login(LoginRequest) returns (LoginResponse) {
+        option (google.api.http) = {
+            post: "/api/auth/login"
+            body: "*"
+        };
+    }
+
+    rpc Logout(google.protobuf.Empty) returns (google.protobuf.Empty) {
+        option (google.api.http) = {
+            post: "/api/auth/logout"
+            body: "*"
+        };
+    }
+
+    rpc Refresh(RefreshRequest) returns (LoginResponse) {
+        option (google.api.http) = {
+            post: "/api/auth/refresh"
+            body: "*"
+        };
+    }
+
+    rpc User(google.protobuf.Empty) returns (UserResponse) {
+        option (google.api.http) = {
+            get: "/api/auth/user"
+        };
+    }
+
+    rpc Register(RegisterRequest) returns (google.protobuf.Empty) {
+        option (google.api.http) = {
+            post: "/api/auth/register"
+            body: "*"
+        };
+    }
+
+    rpc Restore(RestoreRequest) returns (google.protobuf.Empty) {
+        option (google.api.http) = {
+            post: "/api/auth/restore"
+            body: "*"
+        };
+    }
+
+    rpc Reset(ResetRequest) returns (google.protobuf.Empty) {
+        option (google.api.http) = {
+            post: "/api/auth/reset"
+            body: "*"
+        };
+    }
+
+    rpc SecurityLog(SecurityLogRequest) returns (SecurityLogResponse) {
+        option (google.api.http) = {
+            post: "/api/auth/security_log"
+            body: "*"
+        };
+    }
+
+}
+
+message LoginRequest {
+    string email = 1;
+    string password = 2;
+}
+
+message LoginResponse {
+    string token = 1;
+    string refresh_token = 2;
+}
+
+message RefreshRequest {
+    string refresh_token = 2;
+}
+
+message User {
+    string  user_id = 1;
+    string  first_name = 2;
+    string  middle_name = 3;
+    string  last_name = 4;
+    string  email = 5;
+    int64   since = 6;
+    string  role = 7;
+}
+
+message UserResponse {
+    User  user = 1;
+}
+
+message RegisterRequest {
+    string  first_name = 1;
+    string  middle_name = 2;
+    string  last_name = 3;
+    string  email = 4;
+    string  password = 5;
+}
+
+message RestoreRequest {
+    string  email = 1;
+}
+
+message ResetRequest {
+    string  email = 1;
+    string  code = 2;
+    string  password = 3;
+}
+
+message SecurityLogRequest {
+    int32    offset = 1;
+    int32    limit = 2;
+}
+
+message SecurityLogItem {
+    int32   position = 1;
+    string  event_name = 2;
+    int64   event_time = 3;
+    string  remote_ip = 4;
+    string  user_agent = 5;
+}
+
+message SecurityLogResponse {
+    int32   total = 1;
+    repeated SecurityLogItem items = 2;
+}
+

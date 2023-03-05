@@ -1,0 +1,172 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+
+option go_package = "pkg/pb";
+option java_multiple_files = true;
+option java_package = "com.codeallergy";
+option java_outer_classname = "LightTemplateProtos";
+option objc_class_prefix = "LTP";
+
+import "protoc-gen-openapiv2/options/annotations.proto";
+import "google/protobuf/empty.proto";
+
+option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
+    info: {
+        title: "SiteService";
+        version: "1.0";
+        contact: {
+            name: "SiteService";
+            url: "https://github.com/codeallergy/template";
+            email: "zander@schwid.com";
+        };
+    };
+    schemes: HTTP;
+    schemes: HTTPS;
+    consumes: "application/json";
+    consumes: "application/octet-stream";
+    produces: "application/json";
+    produces: "application/octet-stream";
+};
+
+package lighttemplate;
+
+
+//
+//  SiteService
+//
+
+service SiteService {
+
+    rpc Page(PageName) returns (PageContent) {
+        option (google.api.http) = {
+            get: "/api/page/{name}"
+        };
+    }
+
+    rpc UserDelete(UserId) returns (google.protobuf.Empty) {
+       option (google.api.http) = {
+           delete: "/api/user/{id}"
+       };
+    }
+
+    rpc AdminPageScan(AdminScanRequest) returns (AdminPageScanResponse) {
+        option (google.api.http) = {
+            post: "/api/admin/pages"
+            body: "*"
+        };
+    }
+
+    rpc AdminCreatePage(AdminPage) returns (google.protobuf.Empty) {
+        option (google.api.http) = {
+            post: "/api/admin/page"
+            body: "*"
+        };
+    }
+
+    rpc AdminGetPage(PageName) returns (AdminPage) {
+        option (google.api.http) = {
+            get: "/api/admin/page/{name}"
+        };
+    }
+
+    rpc AdminUpdatePage(AdminPage) returns (google.protobuf.Empty) {
+        option (google.api.http) = {
+            put: "/api/admin/page/{name}"
+            body: "*"
+        };
+    }
+
+    rpc AdminDeletePage(PageName) returns (google.protobuf.Empty) {
+        option (google.api.http) = {
+            delete: "/api/admin/page/{name}"
+        };
+    }
+
+   rpc AdminUserScan(AdminScanRequest) returns (AdminUserScanResponse) {
+       option (google.api.http) = {
+           post: "/api/admin/users"
+           body: "*"
+       };
+   }
+
+    rpc AdminGetUser(UserId) returns (AdminUser) {
+        option (google.api.http) = {
+            get: "/api/admin/users/{id}"
+        };
+    }
+
+    rpc AdminUpdateUser(AdminUser) returns (google.protobuf.Empty) {
+       option (google.api.http) = {
+           put: "/api/admin/users/{id}"
+           body: "*"
+       };
+    }
+
+   rpc AdminDeleteUser(UserId) returns (google.protobuf.Empty) {
+       option (google.api.http) = {
+           delete: "/api/admin/users/{id}"
+       };
+   }
+
+}
+
+message PageName {
+    string name = 1;
+}
+
+message PageContent {
+    string title = 1;
+    string content = 2;
+}
+
+message AdminScanRequest {
+    int32  offset = 1;
+    int32  limit = 2;
+}
+
+message PageItem {
+    int32   position = 1;
+    string  name = 2;
+    string  title = 3;
+    int64   created_at = 4;
+}
+
+message AdminPageScanResponse {
+    int32   total = 1;
+    repeated PageItem items = 2;
+}
+
+message AdminPage {
+    string name = 1;
+    string title = 2;
+    string content = 3;
+    string content_type = 4;  // HTML or MARKDOWN
+    string prev = 5; // using for updating name
+}
+
+message UserItem {
+    int32   position = 1;
+    string  id = 2;
+    string  email = 3;
+    string  full_name = 4;
+    string  role = 5;
+    int64   created_at = 6;
+}
+
+message AdminUserScanResponse {
+    int32   total = 1;
+    repeated UserItem items = 2;
+}
+
+message UserId {
+    string  id = 1;
+}
+
+message AdminUser {
+    string  id = 1;
+    string  email = 2;
+    string  full_name = 3;
+    string  role = 4;
+    int64   created_at = 5;
+}
