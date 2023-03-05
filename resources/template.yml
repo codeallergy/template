@@ -1,6 +1,6 @@
 application:
   package: "github.com/codeallergy/template"
-  company: "CodeAllergy"
+  company: "codeallergy"
   copyright: "Copyright (c) 2022 Zander Schwid & Co. LLC. All rights reserved."
   nat: "off"
   autoupdate: "on"
