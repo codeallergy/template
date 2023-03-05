@@ -11,10 +11,10 @@ go generate
 `
 
 How to build App
-`
+```
 go generate
 make
-`
+```
 
 Properties:
 ```
