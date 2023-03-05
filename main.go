@@ -29,10 +29,10 @@ import (
 	"github.com/codeallergy/template/pkg/server"
 	"github.com/codeallergy/template/pkg/service"
 	"github.com/codeallergy/sprintframework/pkg/app"
-	aclient "github.com/codeallergy/sprintframework/pkg/client"
-	acmd "github.com/codeallergy/sprintframework/pkg/cmd"
-	acore "github.com/codeallergy/sprintframework/pkg/core"
-	aserver "github.com/codeallergy/sprintframework/pkg/server"
+	sprintclient "github.com/codeallergy/sprintframework/pkg/client"
+	sprintcmd "github.com/codeallergy/sprintframework/pkg/cmd"
+	sprintcore "github.com/codeallergy/sprintframework/pkg/core"
+	sprintserver "github.com/codeallergy/sprintframework/pkg/server"
 	"os"
 	"time"
 )
@@ -78,26 +78,26 @@ func doMain() (err error) {
 	return app.Application("template",
 		app.WithVersion(Version),
 		app.WithBuild(Build),
-		app.Beans(app.DefaultApplicationBeans, acmd.DefaultCommands, AppAssets, AppGzipAssets, AppResources, cmd.Commands),
-		app.Core(acore.CoreScanner(
-			acore.BadgerStorageFactory("config-storage"),
-			acore.BadgerStorageFactory("host-storage"),
-			acore.LumberjackFactory(),
-			acore.AutoupdateService(),
+		app.Beans(app.DefaultApplicationBeans, sprintcmd.DefaultCommands, AppAssets, AppGzipAssets, AppResources, cmd.Commands),
+		app.Core(sprintcore.CoreScanner(
+			sprintcore.BadgerStorageFactory("config-storage"),
+			sprintcore.BadgerStorageFactory("host-storage"),
+			sprintcore.LumberjackFactory(),
+			sprintcore.AutoupdateService(),
 			service.UserService(),
 			service.SecurityLogService(),
 			service.PageService(),
 		)),
-		app.Server(aserver.ServerScanner(
-			aserver.AuthorizationMiddleware(),
-			aserver.GrpcServerFactory("control-grpc-server"),
-			aserver.ControlServer(),
+		app.Server(sprintserver.ServerScanner(
+			sprintserver.AuthorizationMiddleware(),
+			sprintserver.GrpcServerFactory("control-grpc-server"),
+			sprintserver.ControlServer(),
 			server.UIGrpcServer(),
-			aserver.HttpServerFactory("control-gateway-server"),
-			aserver.TlsConfigFactory("tls-config"),
+			sprintserver.HttpServerFactory("control-gateway-server"),
+			sprintserver.TlsConfigFactory("tls-config"),
 		)),
-		app.Client(aclient.ControlClientScanner(
-			aclient.AnyTlsConfigFactory("tls-config"),
+		app.Client(sprintclient.ControlClientScanner(
+			sprintclient.AnyTlsConfigFactory("tls-config"),
 			client.AdminClient(),
 		)),
 	).Run(os.Args[1:])
